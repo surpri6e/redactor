@@ -4,6 +4,7 @@
 
 #include "./headers/add.hpp"
 #include "./headers/Redactor.hpp"
+#include "./headers/Win.hpp"
 
 
 bool isWriting = true;
@@ -13,16 +14,16 @@ const std::string FILE_PATH = "C:\\mdredactor-result\\";
 
 std::vector<std::string> fullText = {};
 
-// DO OPEN OR CREATE FILE
-
-// MAKE FILE IN SATIC DIRECTORY
-// OPEN FILE WITH LAYOUT
-// ANALYTICS CODE REVEIW
-
 int main() {
-	add::startUp(FILE_NAME);
+	system("title MDRedactor");
+	std::ios::sync_with_stdio(false);
 
-	std::thread checkerTread(add::checker, std::ref(fullText), FILE_NAME + ".md", FILE_PATH);
+	win::helloMessageBox();
+
+	add::startUp(FILE_NAME);
+	FILE_NAME += ".md";
+
+	std::thread checkerTread(add::checker, std::ref(fullText), std::ref(FILE_NAME), std::ref(FILE_PATH));
 
 	while (isWriting) {
 		std::string word = " ";

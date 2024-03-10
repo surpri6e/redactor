@@ -1,7 +1,4 @@
 #include "../main.hpp"
-
-#include <windows.h>
-
 #include "../headers/add.hpp"
 #include "../headers/Redactor.hpp"
 
@@ -32,7 +29,7 @@ void add::startUp(std::string& fn) {
 	}
 	*/
 
-
+	//CHECK ON EXIST FILE
 
 
 	std::cout << std::endl;
@@ -51,7 +48,7 @@ void add::startUp(std::string& fn) {
 	//Handle error;
 }
 
-void add::checker(const std::vector<std::string>& text, const std::string name, const std::string path) {
+void add::checker(const std::vector<std::string>& text, const std::string& name, const std::string& path) {
 	while (true) {
 		if (GetKeyState(121) & 0x8000) {
 			Redactor::saveFile(text, name, path);

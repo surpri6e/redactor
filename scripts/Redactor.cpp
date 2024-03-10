@@ -5,15 +5,16 @@
 
 #include "../headers/Redactor.hpp"
 
-
+//ADD HERE OPTIONS
 void Redactor::saveFile(const std::vector<std::string>& text, const std::string& name, const std::string& path) {
 	bool pathExists = std::filesystem::is_directory(path);
 
 	if (pathExists) {
 		std::ofstream fileOut(path + name);
+
 		if (!fileOut.is_open()) {
 
-			std::cout << "Incorrect file name." << std::endl;
+			std::cerr << "Incorrect file name." << std::endl;
 			exit(201);
 		}
 
@@ -22,11 +23,13 @@ void Redactor::saveFile(const std::vector<std::string>& text, const std::string&
 		}
 
 		fileOut.close();
-	}
-	else {
+	} else {
 		std::filesystem::create_directory(path);
 		std::ofstream fileOut(path + name);
+
 		if (!fileOut.is_open()) {
+
+			std::cerr << "Can't open file." << std::endl;
 			exit(202);
 		}
 

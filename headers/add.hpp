@@ -4,5 +4,5 @@
 
 namespace add {
 	void startUp(std::string&);
-	void checker(const std::vector<std::string>&, const std::string, const std::string);
+	void checker(const std::vector<std::string>&, const std::string&, const std::string&);
 }
