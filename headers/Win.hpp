@@ -7,7 +7,6 @@ public:
 	static HANDLE ConsoleOutput;
 	static HWND ConsoleWindow;
 	static void helloMessageBox();
-	static void setCursorPosition(short x, short y);
-	static void setConsoleCursorVisible(bool show, short size);
-	static void setConsoleSize();
+	static void setCursorPosition(short, short);
+	static void setConsoleCursorVisible(bool);
 };

@@ -12,19 +12,12 @@ void Win::setCursorPosition(short x, short y) {
 	SetConsoleCursorPosition(Win::ConsoleOutput, { x, y });
 }
 
-void Win::setConsoleCursorVisible(bool show, short size) {
+void Win::setConsoleCursorVisible(bool show) {
 	CONSOLE_CURSOR_INFO structCursorInfo;
 	GetConsoleCursorInfo(Win::ConsoleOutput, &structCursorInfo);
 
 	structCursorInfo.bVisible = show; 
-	structCursorInfo.dwSize = size;
 
 	SetConsoleCursorInfo(Win::ConsoleOutput, &structCursorInfo);
-}
-
-void Win::setConsoleSize() {
-	RECT rect;
-	GetWindowRect(Win::ConsoleWindow, &rect);
-	MoveWindow(Win::ConsoleWindow, rect.left, rect.top, 1000, 600, TRUE);
 }
 

@@ -2,9 +2,17 @@
 #include "../headers/add.hpp"
 #include "../headers/Redactor.hpp"
 
-void add::startUp(std::string& fn) {
+void add::printStartUpMessages() {
 	std::cout << "Welcome to MD Redactor. Press F10 - to save your file." << std::endl;
 	std::cout << "[c]reate new file or [r]edactor older?: ";
+}
+
+void add::setupConfig() {
+
+}
+
+void add::startUp(std::string& fn) {
+	add::printStartUpMessages();
 
 	char _command;
 
@@ -12,15 +20,14 @@ void add::startUp(std::string& fn) {
 		_command = _getch();
 
 		if ((int)_command != 99 && (int)_command != 114) {
+			Sleep(200);
 			system("cls");
 			std::cout << "INCORRENT COMMAND!" << std::endl << std::endl;
-			std::cout << "Welcome to MD Redactor. Press F10 - to save your file." << std::endl;
-			std::cout << "[c]reate new file or [r]edactor older?: ";
+			add::printStartUpMessages();
 			continue;
 		} else {
 			system("cls");
-			std::cout << "Welcome to MD Redactor. Press F10 - to save your file." << std::endl;
-			std::cout << "[c]reate new file or [r]edactor older?: ";
+			add::printStartUpMessages();
 			std::cout << _command;
 			break;
 		}
@@ -28,7 +35,7 @@ void add::startUp(std::string& fn) {
 
 	/*
 	if (command == 'c') { // 99
-
+		//CHECK ON EXIST FILE
 
 
 	}
@@ -37,8 +44,6 @@ void add::startUp(std::string& fn) {
 
 	}
 	*/
-
-	//CHECK ON EXIST FILE
 
 
 	std::cout << std::endl;
@@ -55,12 +60,4 @@ void add::startUp(std::string& fn) {
 	fn = name;
 	
 	//Handle error;
-}
-
-void add::checker(const std::vector<std::string>& text, const std::string& name, const std::string& path) {
-	while (true) {
-		if (GetKeyState(121) & 0x8000) {
-			Redactor::saveFile(text, name, path);
-		}
-	}
 }

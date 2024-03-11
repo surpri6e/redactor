@@ -19,7 +19,7 @@ add_executable (redactor
 	"scripts/Redactor.cpp"
 	"headers/add.hpp"
 	"headers/Redactor.hpp"
- "scripts/Options.cpp" "scripts/win.cpp")
+  "scripts/Win.cpp" "scripts/parallel.cpp" "scripts/config.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET redactor PROPERTY CXX_STANDARD 20)
