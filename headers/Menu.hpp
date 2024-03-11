@@ -4,6 +4,6 @@
 
 class Menu {
 public:
-	static void printMenu();
-	static void navigationMenu();
+	static void printMenu(int&);
+	static void navigationMenu(char&, int&);
 };

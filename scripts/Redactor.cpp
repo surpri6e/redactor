@@ -4,8 +4,8 @@
 #include <filesystem>
 
 #include "../headers/Redactor.hpp"
+#include "../headers/Config.hpp"
 
-//ADD HERE OPTIONS
 void Redactor::saveFile(const std::vector<std::string>& text, const std::string& name, const std::string& path) {
 	bool pathExists = std::filesystem::is_directory(path);
 
