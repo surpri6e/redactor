@@ -18,7 +18,10 @@ int main() {
 	system("title MDRedactor");
 	std::ios::sync_with_stdio(false);
 
-	win::helloMessageBox();
+	::SetConsoleTextAttribute(Win::ConsoleOutput, FOREGROUND_RED | FOREGROUND_BLUE);
+
+	Win::setConsoleSize();
+	Win::helloMessageBox();
 
 	add::startUp(FILE_NAME);
 	FILE_NAME += ".md";
@@ -42,3 +45,19 @@ int main() {
 
 	return 0;
 }
+
+/*
+	char ch;
+
+	while (true)
+
+	{
+
+		ch = _getch();
+
+		if (ch == -32) ch = _getch(); // Отлавливаем стрелочки
+
+		std::cout << "Код " << (int)ch << std::endl;
+
+	}
+	*/

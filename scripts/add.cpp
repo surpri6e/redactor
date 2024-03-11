@@ -4,28 +4,37 @@
 
 void add::startUp(std::string& fn) {
 	std::cout << "Welcome to MD Redactor. Press F10 - to save your file." << std::endl;
+	std::cout << "[c]reate new file or [r]edactor older?: ";
 
+	char _command;
+
+	while (true) {
+		_command = _getch();
+
+		if ((int)_command != 99 && (int)_command != 114) {
+			system("cls");
+			std::cout << "INCORRENT COMMAND!" << std::endl << std::endl;
+			std::cout << "Welcome to MD Redactor. Press F10 - to save your file." << std::endl;
+			std::cout << "[c]reate new file or [r]edactor older?: ";
+			continue;
+		} else {
+			system("cls");
+			std::cout << "Welcome to MD Redactor. Press F10 - to save your file." << std::endl;
+			std::cout << "[c]reate new file or [r]edactor older?: ";
+			std::cout << _command;
+			break;
+		}
+	}
 
 	/*
-	char command = ' ';
-
-	std::cout << "[c]reate new file or [r]edactor older?: ";
-	std::cin >> command;
-
-	if (command == 'c') {
+	if (command == 'c') { // 99
 
 
 
 	}
-
-
 	if (command == 'r') {
 
 
-	}
-
-	if (command != 'r' && command != 'r') {
-		exit(202);
 	}
 	*/
 

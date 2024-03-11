@@ -1,70 +1,30 @@
 #include "../main.hpp"
 #include "../headers/Win.hpp"
 
-HANDLE Win::Console = GetStdHandle(STD_OUTPUT_HANDLE);
-
-/*
-void GoToXY(HANDLE& con, short x, short y) {
-	SetConsoleCursorPosition(con, { x, y });
-}
-
-void ConsoleCursorVisible(HANDLE& con, bool show, short size) {
-
-	CONSOLE_CURSOR_INFO structCursorInfo;
-
-	GetConsoleCursorInfo(con, &structCursorInfo);
-
-	structCursorInfo.bVisible = show; // измен€ем видимость курсора
-
-	structCursorInfo.dwSize = size; // измен€ем размер курсора
-
-	SetConsoleCursorInfo(con, &structCursorInfo);
-
-}
-*/
+HANDLE Win::ConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
+HWND Win::ConsoleWindow = GetConsoleWindow();
 
 void Win::helloMessageBox() {
 	MessageBox(NULL, "Thanks for choosing our redactor!", "MDRedactor info", MB_OK);
 }
 
+void Win::setCursorPosition(short x, short y) {
+	SetConsoleCursorPosition(Win::ConsoleOutput, { x, y });
+}
 
+void Win::setConsoleCursorVisible(bool show, short size) {
+	CONSOLE_CURSOR_INFO structCursorInfo;
+	GetConsoleCursorInfo(Win::ConsoleOutput, &structCursorInfo);
 
-	//SetConsoleTextAttribute(Console, BACKGROUND_BLUE);
-	//system("CLS");
-	//SetConsoleScreenBufferSize(Console, {1920, 1080});
+	structCursorInfo.bVisible = show; 
+	structCursorInfo.dwSize = size;
 
-	//HWND hWindowConsole = GetConsoleWindow();
-	//RECT r;
-	//GetWindowRect(hWindowConsole, &r); //stores the console's current dimensions
-	//MoveWindow(hWindowConsole, r.left, r.top, 1920, 1080, TRUE);
+	SetConsoleCursorInfo(Win::ConsoleOutput, &structCursorInfo);
+}
 
-	//SetConsoleDisplayMode(Console, CONSOLE_FULLSCREEN_MODE, 0);
+void Win::setConsoleSize() {
+	RECT rect;
+	GetWindowRect(Win::ConsoleWindow, &rect);
+	MoveWindow(Win::ConsoleWindow, rect.left, rect.top, 1000, 600, TRUE);
+}
 
-	//::SendMessage(::GetConsoleWindow(), WM_SYSKEYDOWN, VK_RETURN, 0x20000000);
-
-	/*
-	char ch;
-
-	while (true)
-
-	{
-
-		ch = _getch();
-
-		if (ch == -32) ch = _getch(); // ќтлавливаем стрелочки
-
-		std::cout << " од " << (int)ch << std::endl;
-
-	}
-	*/
-
-
-	//ConsoleCursorVisible(Console, false, 100);
-	//GoToXY(Console, 10, 10);
-	// 
-	// 
-	//COORD cursorPosition;
-	//cursorPosition.X = 10;
-	//cursorPosition.Y = 10;
-
-	//SetConsoleCursorPosition(Console, cursorPosition);
