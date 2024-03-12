@@ -1,11 +1,12 @@
 #include "../main.hpp"
 #include "../headers/parallel.hpp"
 #include "../headers/Redactor.hpp"
+#include "../headers/Config.hpp"
 
-void parallel::checker(const std::vector<std::string>& text, const std::string& name, const std::string& path) {
-	while (true) {
+void parallel::checker() {
+	while (Config::isWriting) {
 		if (GetKeyState(121) & 0x8000) {
-			Redactor::saveFile(text, name, path);
+			Redactor::saveFile(Config::TEXT);
 		}
 	}
 }

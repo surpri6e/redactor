@@ -11,13 +11,15 @@
 
 int main() {
 	Config::setupConfig();
-	Win::setConsoleCursorVisible(Config::isWriting);
 	
 	int activeMenu = 0;
 	
 	char ch;
 
+	std::thread checkerTread(parallel::checker);
+
 	while (true) {
+		Win::setConsoleCursorVisible(Config::isWriting);
 		if (!Config::isWriting) {
 			Menu::printMenu(activeMenu);
 			ch = _getch();
@@ -25,32 +27,7 @@ int main() {
 		}
 	}
 
-	/*
-
-	add::startUp(FILE_NAME);
-	FILE_NAME += ".md";
-
-	std::thread checkerTread(parallel::checker, std::ref(fullText), std::ref(FILE_NAME), std::ref(FILE_PATH));
-
 	checkerTread.join();
 
 	return 0;
-	*/
 }
-
-
-/*
-	char ch;
-
-	while (true)
-
-	{
-
-		ch = _getch();
-
-		if (ch == -32) ch = _getch(); // Отлавливаем стрелочки
-
-		std::cout << "Код " << (int)ch << std::endl;
-
-	}
-	*/

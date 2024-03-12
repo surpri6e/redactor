@@ -1,63 +1,44 @@
 #include "../main.hpp"
 #include "../headers/add.hpp"
 #include "../headers/Redactor.hpp"
+#include "../headers/Config.hpp"
+#include "../headers/Win.hpp"
 
-void add::printStartUpMessages() {
+void add::printMessages() {
 	std::cout << "Welcome to MD Redactor. Press F10 - to save your file." << std::endl;
-	std::cout << "[c]reate new file or [r]edactor older?: ";
+	std::cout << "Enter name of your new file: ";
 }
 
-void add::setupConfig() {
+void add::createFile() {
+	system("cls");
 
-}
-
-void add::startUp(std::string& fn) {
-	add::printStartUpMessages();
-
-	char _command;
-
-	while (true) {
-		_command = _getch();
-
-		if ((int)_command != 99 && (int)_command != 114) {
-			Sleep(200);
-			system("cls");
-			std::cout << "INCORRENT COMMAND!" << std::endl << std::endl;
-			add::printStartUpMessages();
-			continue;
-		} else {
-			system("cls");
-			add::printStartUpMessages();
-			std::cout << _command;
-			break;
-		}
-	}
-
-	/*
-	if (command == 'c') { // 99
-		//CHECK ON EXIST FILE
-
-
-	}
-	if (command == 'r') {
-
-
-	}
-	*/
-
-
-	std::cout << std::endl;
+	add::printMessages();
+	Win::setConsoleCursorVisible(true);
 
 	std::string name;
-
-	std::cout << "Enter name of file: ";
 	std::cin >> name;
+	Config::FILE_NAME = name;
 
-
-	//Redactor.save() default
 	std::cout << std::endl;
 
-	fn = name;
-	
-	//Handle error;
+	//TAKE OF COMMAND YES OR NO IN CYCLE
+
+	// EXIST FILE!!
+	//Redactor.save() default
+}
+
+void add::openFile() {
+	system("cls");
+
+	add::printMessages();
+	Win::setConsoleCursorVisible(true);
+
+	std::string name;
+	std::cin >> name;
+	Config::FILE_NAME = name;
+
+	std::cout << std::endl;
+
+	// EXIST FILE!!
+	//Redactor.save() default
 }

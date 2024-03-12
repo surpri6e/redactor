@@ -22,5 +22,7 @@ public:
 
 	static std::string FILE_NAME;
 
+	static std::vector<char> TEXT;
+
 	static void setupConfig();
 };

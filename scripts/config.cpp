@@ -18,6 +18,8 @@ const std::string Config::Menu[] = { "New file", "Open older", "Exit" };
 
 bool Config::isWriting = false;
 
+std::vector<char> Config::TEXT = {};
+
 std::string Config::FILE_NAME = "";
 
 void Config::setupConfig() {
