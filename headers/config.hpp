@@ -17,12 +17,15 @@ public:
 
 	static const std::size_t SIZE_OF_MENU;
 	static const std::string Menu[];
+	static int activeMenu;
 
 	static bool isWriting;
 
 	static std::string FILE_NAME;
 
 	static std::vector<char> TEXT;
+
+	static char CHAR;
 
 	static void setupConfig();
 };

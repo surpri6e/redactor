@@ -5,11 +5,14 @@
 #include "../headers/keywords.hpp"
 #include "../headers/add.hpp"
 
-void Menu::printMenu(int& activeMenu) {
+void Menu::printMenu() {
+	system( "cls" );
+	Win::setConsoleCursorVisible( Config::isWriting );
+
 	int y = Config::yMenu;
 
 	for (std::size_t i = 0; i < Config::SIZE_OF_MENU; i++) {
-		if (i == activeMenu)
+		if (i == Config::activeMenu)
 			SetConsoleTextAttribute(Win::ConsoleOutput, Config::MAIN_COLOR);
 		else
 			SetConsoleTextAttribute(Win::ConsoleOutput, Config::MAIN_COLOR_LIGHTEN);
@@ -21,26 +24,24 @@ void Menu::printMenu(int& activeMenu) {
 	y = Config::yMenu;
 }
 
-void Menu::navigationMenu(char& ch, int& activeMenu) {
-	switch (ch) {
+void Menu::navigationMenu() {
+	switch (Config::CHAR) {
 	case EKeywords::UP:
-		if (!(activeMenu == 0)) activeMenu--;
+		if (!(Config::activeMenu == 0)) Config::activeMenu--;
 			break;
 	case EKeywords::DOWN:
-		if(!(activeMenu == Config::SIZE_OF_MENU - 1)) activeMenu++;
+		if(!(Config::activeMenu == Config::SIZE_OF_MENU - 1)) Config::activeMenu++;
 			break;
 
 	case EKeywords::ESC:
 		exit(9090);
 		break;
 	case EKeywords::ENTER:
-		switch (activeMenu) {
+		switch (Config::activeMenu) {
 		case 0:
-			Config::isWriting = true;
 			add::createFile();
 			break;
 		case 1:
-			Config::isWriting = true;
 			add::openFile();
 			break;
 		case 2:

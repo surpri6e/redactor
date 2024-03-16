@@ -1,7 +1,5 @@
 #pragma once 
 
-#include "../main.hpp"
-
 enum EKeywords {
 	UP = 72,
 	DOWN = 80,

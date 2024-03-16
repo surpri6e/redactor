@@ -15,12 +15,15 @@ const std::string Config::FILE_PATH = "C:\\mdredactor-result\\";
 
 const std::size_t Config::SIZE_OF_MENU = 3;
 const std::string Config::Menu[] = { "New file", "Open older", "Exit" };
+int Config::activeMenu = 0;
 
 bool Config::isWriting = false;
 
 std::vector<char> Config::TEXT = {};
 
 std::string Config::FILE_NAME = "";
+
+char Config::CHAR = 0;
 
 void Config::setupConfig() {
 	system("title MDRedactor");

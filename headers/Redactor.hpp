@@ -4,7 +4,7 @@
 
 class Redactor {
 public:
-	static void saveFile(const std::vector<char>&);
-
+	static void saveFile();
 	static bool isFileExist();
+	static void openFile();
 };
